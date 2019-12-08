@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -87,11 +88,23 @@ public class FijaSteps {
 
     @And("^Darle clik en obviar y continuar$")
     public void darleClikEnObviarYContinuar() {
-        WebElement option = driver.findElement(By.id("continuar_"));
-        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        WebElement element = driver.findElement(By.id("continuar_"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().perform();
+
+
+        /*WebElement element = driver.findElement(By.id("continuar_"));
+        WebDriverWait wait2 = new WebDriverWait(driver, 10);
+        wait2.until(ExpectedConditions.elementToBeClickable(By.id("continuar_"))).click();
+*/
+
+       /* WebElement option = driver.findElement(By.id("continuar_"));
+
         wait = new WebDriverWait(driver, 10);
+        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(option));
-        option.click();
+        option.click();*/
+
     }
 
     @And("^Seleccionar Tipo de Documento$")
@@ -103,7 +116,7 @@ public class FijaSteps {
     @And("^Ingreso de Numero de Documento$")
     public void ingresoDeNumeroDeDocumento() throws Throwable {
         driver.findElement(By.id("docNroDni")).
-                sendKeys("43797420");
+                sendKeys("74961705");
     }
 
     @And("^Selecciono el departamento$")
@@ -159,7 +172,7 @@ public class FijaSteps {
     public void elegirNombreDeLaMadre() throws Throwable {
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         Select objDriver = new Select(driver.findElement(By.id("parentescoSelect")));
-        objDriver.selectByVisibleText("AMELIA");
+        objDriver.selectByVisibleText("MARGARITA");
 
     }
 
