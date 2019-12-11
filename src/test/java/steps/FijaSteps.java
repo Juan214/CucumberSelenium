@@ -6,7 +6,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,16 +28,17 @@ public class FijaSteps {
     public void ingresarUnUsuario() throws Throwable {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
-        driver.findElement(By.xpath("/html[1]/body[1]/my-app[1]/main[1]/login[1]/div[2]/div[1]/div[1]/form[1]/div[1]/input[1]")).clear();
-        driver.findElement(By.xpath("/html[1]/body[1]/my-app[1]/main[1]/login[1]/div[2]/div[1]/div[1]/form[1]/div[1]/input[1]")).
+        driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[1]/input")).clear();
+        driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[1]/input")).
                 sendKeys("158829");
     }
 
     @And("^Darle click en continuar$")
     public void darleClickEnContinuar() throws Throwable {
-        WebElement option = driver.findElement(By.xpath("/html[1]/body[1]/my-app[1]/main[1]/login[1]/div[2]/div[1]/div[1]/form[1]/div[2]/a[1]"));
+
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
+        WebElement option = driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[2]/a"));
         wait.until(ExpectedConditions.elementToBeClickable(option));
         option.click();
     }
@@ -88,9 +88,12 @@ public class FijaSteps {
 
     @And("^Darle clik en obviar y continuar$")
     public void darleClikEnObviarYContinuar() {
-        WebElement element = driver.findElement(By.id("continuar_"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().perform();
+        WebElement option = driver.findElement(By.id("continuar_"));
+
+        wait = new WebDriverWait(driver, 10);
+        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(option));
+        option.click();
 
 
         /*WebElement element = driver.findElement(By.id("continuar_"));
@@ -116,7 +119,7 @@ public class FijaSteps {
     @And("^Ingreso de Numero de Documento$")
     public void ingresoDeNumeroDeDocumento() throws Throwable {
         driver.findElement(By.id("docNroDni")).
-                sendKeys("74961705");
+                sendKeys("09287246");
     }
 
     @And("^Selecciono el departamento$")
@@ -172,7 +175,7 @@ public class FijaSteps {
     public void elegirNombreDeLaMadre() throws Throwable {
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         Select objDriver = new Select(driver.findElement(By.id("parentescoSelect")));
-        objDriver.selectByVisibleText("MARGARITA");
+        objDriver.selectByVisibleText("DORA");
 
     }
 
@@ -273,7 +276,7 @@ public class FijaSteps {
 
     @And("^Click en continuar_sva$")
     public void clickEnContinuar_sva() throws Throwable{
-        WebElement option = driver.findElement(By.xpath("/html/body/my-app/main/sva/div/div/div[2]/div[1]/div[2]/a"));
+        WebElement option = driver.findElement(By.linkText("CONTINUAR"));
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(option));
         option.sendKeys(Keys.ENTER);
