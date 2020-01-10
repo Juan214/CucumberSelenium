@@ -28,7 +28,7 @@ public class FijaSteps {
     public void ingresarUnUsuario() throws Throwable {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
-        driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[1]/input")).clear();
+        /*driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[1]/input")).clear();*/
         driver.findElement(By.xpath("/html/body/my-app/main/login/div[2]/div/div/form/div[1]/input")).
                 sendKeys("158829");
     }
@@ -80,9 +80,11 @@ public class FijaSteps {
 
     @And("^Darle click en Altas Nuevas$")
     public void darleClickEnAltasNuevas() throws Throwable {
+        WebElement option = driver.findElement(By.linkText("ALTAS NUEVAS"));
+
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 15);
-        WebElement option = driver.findElement(By.linkText("ALTAS NUEVAS"));
+
         option.click();
     }
 
@@ -96,7 +98,7 @@ public class FijaSteps {
         option.click();
 
 
-        /*WebElement element = driver.findElement(By.id("continuar_"));
+         /*WebElement element = driver.findElement(By.id("continuar_"));
         WebDriverWait wait2 = new WebDriverWait(driver, 10);
         wait2.until(ExpectedConditions.elementToBeClickable(By.id("continuar_"))).click();
 */
@@ -119,7 +121,7 @@ public class FijaSteps {
     @And("^Ingreso de Numero de Documento$")
     public void ingresoDeNumeroDeDocumento() throws Throwable {
         driver.findElement(By.id("docNroDni")).
-                sendKeys("09287246");
+                sendKeys("43797420");
     }
 
     @And("^Selecciono el departamento$")
@@ -175,7 +177,7 @@ public class FijaSteps {
     public void elegirNombreDeLaMadre() throws Throwable {
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         Select objDriver = new Select(driver.findElement(By.id("parentescoSelect")));
-        objDriver.selectByVisibleText("DORA");
+        objDriver.selectByVisibleText("AMELIA");
 
     }
 
@@ -210,7 +212,7 @@ public class FijaSteps {
         option.sendKeys(Keys.SPACE);
         option.sendKeys(Keys.ENTER);
         option.sendKeys(Keys.SPACE);
-        option.sendKeys(Keys.ENTER);
+
 
     }
 
