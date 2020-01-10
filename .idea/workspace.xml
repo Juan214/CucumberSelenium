@@ -78,7 +78,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Runner3">
+  <component name="RunManager" selected="Cucumber.js.Login3.feature">
     <configuration name="Runner3" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="CucumberSelenium" />
       <extension name="coverage">
@@ -127,6 +127,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber.js.Login3.feature" />
         <item itemvalue="JUnit.RunnerDemo" />
       </list>
     </recent_temporary>
